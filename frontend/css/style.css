@@ -66,3 +66,8 @@ h1 {
 .container input[type="submit"]:hover {
     background-color: #45a049;
 }
+
+.post {
+    border: black;
+    border-style:outset;
+}

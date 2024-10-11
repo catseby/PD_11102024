@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -52,7 +53,12 @@ class PostController extends Controller implements HasMiddleware
      */
     public function update(Request $request, Post $post)
     {
-        Gate::authorize('modify', $post);
+        //Gate::authorize('modify', [,1]);
+
+        if ($request->user()->id !== $post->user_id) {
+            return "Not Allowed";
+        }
+
         $fields = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required'
