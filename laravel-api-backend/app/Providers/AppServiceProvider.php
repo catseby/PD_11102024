@@ -22,8 +22,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('modify', function ($id,$user_id) {
-            return ! $id === $user_id;
-        });
     }
 }

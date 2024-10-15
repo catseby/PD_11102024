@@ -53,11 +53,7 @@ class PostController extends Controller implements HasMiddleware
      */
     public function update(Request $request, Post $post)
     {
-        //Gate::authorize('modify', [,1]);
-
-        if ($request->user()->id !== $post->user_id) {
-            return "Not Allowed";
-        }
+        Gate::authorize('modify', $post);
 
         $fields = $request->validate([
             'title' => 'required|max:255',
