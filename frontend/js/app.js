@@ -1,7 +1,5 @@
 window.onload = function(event) {
 
-    const getForm = document.getElementById('get-user-form');
-    getForm.addEventListener('submit', fetchUser);
 
     const registerForm = document.getElementById('register-form');
     registerForm.addEventListener('submit', async function(event) {register(event)});

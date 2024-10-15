@@ -9,13 +9,11 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function register(Request $request) {
-        \Log::debug($request);
         $fields = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed'
         ]);
-        \Log::debug($fields);
         $user = User::create($fields);
     
         $token = $user->createToken($user->name);
